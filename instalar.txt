@@ -1,0 +1,6 @@
+nest
+mongo
+swagger
+mongoose
+mongo atlas
+eslint
