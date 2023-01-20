@@ -1,4 +1,4 @@
-import { Prop, Schema } from "@nestjs/mongoose";
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document } from "mongoose";
 
 export type RecetaDocument = Receta & Document;
@@ -14,3 +14,5 @@ export class Receta {
     @Prop()
     author: string;
 }
+
+export const RecetaSchema = SchemaFactory.createForClass(Receta);
