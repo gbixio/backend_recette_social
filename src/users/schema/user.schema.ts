@@ -7,7 +7,7 @@ export type UserDocument = User & Document;
 @Schema()
 export class User {
   @Prop()
-  user_name: string;
+  username: string;
 
   @Prop()
   password: string;
@@ -23,7 +23,7 @@ export class User {
   ];
 
   @Prop()
-  favourites: object;
+  favourites: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

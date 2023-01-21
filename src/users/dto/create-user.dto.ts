@@ -14,10 +14,10 @@ export class CreateUserDto {
   @ApiProperty({
     example: ['harina de garbanzo', 1, 'kilo'],
   })
-  shopping_list: Array<string>;
+  shopping_list: Array<any>;
 
   @ApiProperty({
-    example: 'juancoookie@recettes.com',
+    example: 'juancoookie@recipes.com',
   })
   email: string;
 }

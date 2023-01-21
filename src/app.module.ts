@@ -1,13 +1,15 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { RecetteModule } from './recette/recette.module';
+import { RecipeModule } from './recipe/recipe.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot("mongodb://127.0.0.1:27017/recette"),
-    RecetteModule
+    MongooseModule.forRoot("mongodb://127.0.0.1:27017/LaRecetteSocial"),
+    RecipeModule,
+    UsersModule
   ],
   controllers: [AppController],
   providers: [AppService],

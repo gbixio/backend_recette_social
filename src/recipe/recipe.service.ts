@@ -7,7 +7,7 @@ import { Recipe, RecipeDocument } from './schemas/recipe.schema';
 import { Model } from 'mongoose';
 
 @Injectable()
-export class RecetteService {
+export class RecipeService {
   constructor(
     @InjectModel(Recipe.name)
     private readonly recipeModel: Model<RecipeDocument>,
@@ -22,14 +22,14 @@ export class RecetteService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} recette`;
+    return `This action returns a #${id} recipe`;
   }
 
   update(id: number, updateRecipeDto: UpdateRecipeDto) {
-    return `This action updates a #${id} recette`;
+    return `This action updates a #${id} recipe`;
   }
 
   remove(id: number) {
-    return `This action removes a #${id} recette`;
+    return `This action removes a #${id} recipe`;
   }
 }

@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+
 export class CreateRecipeDto {
   @ApiProperty({
     example: 'tostada',
@@ -13,5 +14,5 @@ export class CreateRecipeDto {
   @ApiProperty({
     example: 'Lola',
   })
-  author: string;
+  username: string;
 }
