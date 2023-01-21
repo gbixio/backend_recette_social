@@ -1,30 +1,31 @@
+/* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { CreateRecetteDto } from './dto/create-recette.dto';
-import { UpdateRecetteDto } from './dto/update-recette.dto';
-import { Receta, RecetaDocument } from './schemas/receta.schema';
+import { CreateRecipeDto } from './dto/create-recipe.dto';
+import { UpdateRecipeDto } from './dto/update-recipe.dto';
+import { Recipe, RecipeDocument } from './schemas/recipe.schema';
 import { Model } from 'mongoose';
 
 @Injectable()
 export class RecetteService {
   constructor(
-    @InjectModel(Receta.name) private readonly recetaModel:
-    Model<RecetaDocument>
-  ){}
+    @InjectModel(Recipe.name)
+    private readonly recipeModel: Model<RecipeDocument>,
+  ) {}
 
-  create(createRecetteDto: CreateRecetteDto) {
-    return this.recetaModel.create(createRecetteDto);
+  create(createRecipeDto: CreateRecipeDto) {
+    return this.recipeModel.create(createRecipeDto);
   }
 
   findAll() {
-    return this.recetaModel.find().exec();
+    return this.recipeModel.find().exec();
   }
 
   findOne(id: number) {
     return `This action returns a #${id} recette`;
   }
 
-  update(id: number, updateRecetteDto: UpdateRecetteDto) {
+  update(id: number, updateRecipeDto: UpdateRecipeDto) {
     return `This action updates a #${id} recette`;
   }
 
