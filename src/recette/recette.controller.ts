@@ -1,11 +1,23 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { RecetteService } from './recette.service';
 import { CreateRecipeDto } from './dto/create-recipe.dto';
 import { UpdateRecipeDto } from './dto/update-recipe.dto';
+import { CreateUserDto } from './dto/create-user.dto'
+
 
 @Controller('recette')
 export class RecetteController {
   constructor(private readonly recetteService: RecetteService) {}
+
+  // La Recette DB CRUD de recetas
 
   @Post()
   create(@Body() createRecipeDto: CreateRecipeDto) {
@@ -30,5 +42,11 @@ export class RecetteController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.recetteService.remove(+id);
+  }
+
+  // CRUD de usuarios
+  @Post()
+  create(@Body() createUserDto: CreateUserDto) {
+    return this.
   }
 }
