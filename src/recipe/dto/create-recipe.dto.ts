@@ -1,6 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-export class CreateRecipeDto {@ApiProperty({
+export class CreateRecipeDto {
+  @ApiProperty({
     example: 'tostada',
   })
   title: string;
@@ -16,24 +17,22 @@ export class CreateRecipeDto {@ApiProperty({
   username: string;
 
   @ApiProperty({
-    example: 2
+    example: 2,
   })
   time: number;
 
   @ApiProperty({
-    example: [
-      "pan", "aceite", "margarina", "mermelada"
-    ]
+    example: ['pan', 'aceite', 'margarina', 'mermelada'],
   })
   ingredients: Array<string>;
 
   @ApiProperty({
-    example: false
+    example: false,
   })
   is_private: boolean;
 
   @ApiProperty({
-    example: ["vegana", "fácil", "desayuno"]
+    example: ['vegana', 'fácil', 'desayuno'],
   })
-  tags: Array<string>
+  tags: Array<string>;
 }
