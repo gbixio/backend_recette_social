@@ -7,7 +7,7 @@ import { Recipe, RecipeDocument } from './schemas/recipe.schema';
 import { Model } from 'mongoose';
 
 @Injectable()
-export class RecipeService {
+export class RecipesService {
   constructor(
     @InjectModel(Recipe.name)
     private readonly recipeModel: Model<RecipeDocument>,
