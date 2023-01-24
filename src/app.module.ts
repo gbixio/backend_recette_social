@@ -5,13 +5,15 @@ import { RecipesModule } from './recipes/recipes.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from './users/users.module';
 import { IngredientsModule } from './ingredients/ingredients.module';
+import { ShoppingListModule } from './shopping-list/shopping-list.module';
 
 @Module({
   imports: [
     MongooseModule.forRoot("mongodb+srv://admin:factoriaf5@back-recette-social.c9q8fgj.mongodb.net/LaRecette"),
     RecipesModule,
     UsersModule,
-    IngredientsModule
+    IngredientsModule,
+    ShoppingListModule
   ],
   controllers: [AppController],
   providers: [AppService],
