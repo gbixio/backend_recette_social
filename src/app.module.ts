@@ -10,6 +10,7 @@ import { UsersService } from './users/users.service';
 import { UsersController } from './users/users.controller';
 import { AuthModule } from './auth/auth.module';
 import { ToolsModule } from './tools/tools.module';
+import { IngredientsModule } from './ingredients/ingredients.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { ToolsModule } from './tools/tools.module';
     UsersModule,
     AuthModule,
     ToolsModule,
+    IngredientsModule,
   ],
   controllers: [AppController ],
   providers: [AppService],

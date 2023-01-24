@@ -7,6 +7,7 @@ import { Model } from 'mongoose';
 import { Request } from 'express';
 import { hash } from 'bcrypt';
 import { EncryptService } from 'src/tools/encrypt.service';
+
 @Injectable()
 export class UsersService {
   constructor(
