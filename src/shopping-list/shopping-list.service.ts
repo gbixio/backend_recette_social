@@ -1,15 +1,22 @@
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
 import { CreateShoppingListDto } from './dto/create-shopping-list.dto';
 import { UpdateShoppingListDto } from './dto/update-shopping-list.dto';
+import { ShoppingList, ShoppingListDocument } from './schemas/shopping-list.schema';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class ShoppingListService {
+  constructor(
+    @InjectModel(ShoppingList.name)
+    private readonly shoppingListModel: Model<ShoppingListDocument>,
+  ) {}
   create(createShoppingListDto: CreateShoppingListDto) {
-    return 'This action adds a new shoppingList';
+    return this.shoppingListModel.create(createShoppingListDto);
   }
 
   findAll() {
-    return `This action returns all shoppingList`;
+    return this.shoppingListModel.find().exec();
   }
 
   findOne(id: number) {

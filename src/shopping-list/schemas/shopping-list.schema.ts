@@ -5,14 +5,13 @@ export type ShoppingListDocument = ShoppingList & Document;
 
 @Schema()
 export class ShoppingList {
-  @Prop()
-  name: string;
 
   @Prop()
-  measure_unit: string;
+  ingredients: [{
+    name: { type: string },
+    amount: { type: number }
+  }]
 
-  @Prop()
-  type: string;
 }
 
-export const IngredientSchema = SchemaFactory.createForClass(ShoppingList);
+export const ShoppingListSchema = SchemaFactory.createForClass(ShoppingList);
