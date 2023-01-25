@@ -11,6 +11,7 @@ import { UsersController } from './users/users.controller';
 import { AuthModule } from './auth/auth.module';
 import { ToolsModule } from './tools/tools.module';
 import { IngredientsModule } from './ingredients/ingredients.module';
+import { BadgesModule } from './badges/badges.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { IngredientsModule } from './ingredients/ingredients.module';
     AuthModule,
     ToolsModule,
     IngredientsModule,
+    BadgesModule,
   ],
   controllers: [AppController ],
   providers: [AppService],
