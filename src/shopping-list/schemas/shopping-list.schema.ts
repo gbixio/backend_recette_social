@@ -1,5 +1,8 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
+import { Ingredient } from 'src/ingredients/schemas/ingredient.schema';
+import { RecipeIngredient } from 'src/recipes/recipe-ingredient.interface';
+import { User } from 'src/users/schemas/user.schema';
 
 export type ShoppingListDocument = ShoppingList & Document;
 
@@ -7,10 +10,11 @@ export type ShoppingListDocument = ShoppingList & Document;
 export class ShoppingList {
 
   @Prop()
-  ingredients: [{
-    name: { type: string },
-    amount: { type: number }
-  }]
+    ingredients: Array<RecipeIngredient>;
+
+  @Prop()
+    user: User;
+
 
 }
 

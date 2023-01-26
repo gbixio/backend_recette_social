@@ -1,5 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
+import { RecipeIngredient } from '../recipe-ingredient.interface';
+
 
 export type RecipeDocument = Recipe & Document;
 
@@ -17,7 +19,7 @@ export class Recipe {@Prop()
   time: number;
 
   @Prop()
-  ingredients: Array<string>;
+  ingredients: Array<RecipeIngredient>;
 
   @Prop()
   is_private: boolean;
