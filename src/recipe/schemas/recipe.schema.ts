@@ -7,20 +7,23 @@ export type RecipeDocument = Recipe & Document;
 
 @Schema()
 export class Recipe {
+/*   @Prop({ type: Object, unique: true })
+  _id: ObjectId; */
+
   @Prop()
   title: string;
 
   @Prop()
   description: string;
 
-  @Prop()
-  author: [{ type: ObjectId, ref: User}];
+  @Prop({ type: Object, ref: () => User })
+  author: ObjectId;
+
+  @Prop([{ type: Object, ref: () => Ingredient }])
+  ingredients: Array<ObjectId>;
 
   @Prop()
   time: number;
-
-  @Prop()
-  ingredients: [{ type: ObjectId, ref: Ingredient}];
 
   @Prop()
   is_private: boolean;
