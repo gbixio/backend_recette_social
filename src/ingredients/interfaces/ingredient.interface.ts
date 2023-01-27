@@ -1,6 +1,8 @@
+import { ObjectId } from "mongoose";
+
 export interface Ingredient {
-    _id: string;
+    ingredientId: ObjectId;
     name: string;
-    quantity: number;
+    amount: number;
     measure_unit: string;
 }

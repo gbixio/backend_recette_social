@@ -1,5 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
+import { Recipe } from 'src/recipes/interfaces/recipe.interface';
+
 
 export type MenuDocument = Menu & Document;
 
@@ -16,6 +18,9 @@ export class Menu {
 
   @Prop()
   owner: string;
+
+  @Prop()
+  recipes: Array<Recipe>;
 }
 
 

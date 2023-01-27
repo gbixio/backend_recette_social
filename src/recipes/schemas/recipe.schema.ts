@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import { RecipeIngredient } from '../recipe-ingredient.interface';
+import { Ingredient } from 'src/ingredients/interfaces/ingredient.interface';
+
 
 
 export type RecipeDocument = Recipe & Document;
@@ -19,7 +20,7 @@ export class Recipe {@Prop()
   time: number;
 
   @Prop()
-  ingredients: Array<RecipeIngredient>;
+  ingredients: Array<Ingredient>;
 
   @Prop()
   is_private: boolean;
@@ -32,6 +33,9 @@ export class Recipe {@Prop()
 
   @Prop()
   views: number;
+
+  @Prop()
+  photo: string;
 }
 
 export const RecipeSchema = SchemaFactory.createForClass(Recipe);

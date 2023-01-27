@@ -32,4 +32,13 @@ export class RecipesService {
   remove(id: number) {
     return `This action removes a #${id} recipe`;
   }
+
+  async addIngredient (
+    recipeId: string,
+    ingredient: any,
+  ): Promise<Recipe> {
+    const recipe = await this.recipeModel.findById(recipeId);
+    recipe.ingredients.push(ingredient);
+    return recipe.save();
+}
 }

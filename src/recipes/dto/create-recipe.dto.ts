@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Ingredient } from 'src/ingredients/interfaces/ingredient.interface';
 
 export class CreateRecipeDto {
   @ApiProperty({
@@ -24,7 +25,7 @@ export class CreateRecipeDto {
   @ApiProperty({
     example: ['pan', 'aceite', 'margarina', 'mermelada'],
   })
-  ingredients: Array<string>;
+  ingredients: Array<Ingredient>;
 
   @ApiProperty({
     example: false,

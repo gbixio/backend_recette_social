@@ -34,7 +34,7 @@ export class MenuesService {
     recipe: any,
   ): Promise<Menu> {
     const menu = await this.menuModel.findById(menuId);
-    menu.recipe.push(recipe);
+    menu.recipes.push(recipe);
     return menu.save();
   }
 
