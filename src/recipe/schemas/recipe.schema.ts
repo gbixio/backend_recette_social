@@ -1,23 +1,26 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, ObjectId } from 'mongoose';
+import { Ingredient } from 'src/ingredients/schema/ingredient.schema';
+import { User } from 'src/users/schema/user.schema';
 
 export type RecipeDocument = Recipe & Document;
 
 @Schema()
-export class Recipe {@Prop()
+export class Recipe {
+  @Prop()
   title: string;
 
   @Prop()
   description: string;
 
   @Prop()
-  username: string;
+  author: [{ type: ObjectId, ref: User}];
 
   @Prop()
   time: number;
 
   @Prop()
-  ingredients: Array<string>;
+  ingredients: [{ type: ObjectId, ref: Ingredient}];
 
   @Prop()
   is_private: boolean;
