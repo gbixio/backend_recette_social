@@ -10,8 +10,11 @@ import {
 import { RecipesService } from './recipes.service';
 import { CreateRecipeDto } from './dto/create-recipe.dto';
 import { UpdateRecipeDto } from './dto/update-recipe.dto';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('recipes')
+@ApiTags ('RECIPES')
+
 export class RecipesController {
   constructor(private readonly recipesService: RecipesService) {}
 
@@ -25,20 +28,28 @@ export class RecipesController {
     return this.recipesService.findAll();
   }
 
-  @Get(':id')
+  @Get('recipe/:id')
   async findOne(@Param('id') id: string) {
     return this.recipesService.findOne(+id);
   }
 
-  @Patch(':id')
+  @Patch('recipe/:id')
   async update(
     @Param('id') id: string,
     @Body() updateRecipeDto: UpdateRecipeDto,
   ) {
     return this.recipesService.update(+id, updateRecipeDto);
   }
+  
+  @Patch(':id/ingredient/:ingredientId')
+  async addIngredient( 
+    @Param('id') id: string,
+    @Body() updateRecipeDto: UpdateRecipeDto,
+  ) {
+    return this.recipesService.addIngredient (id, updateRecipeDto);
+  }
 
-  @Delete(':id')
+  @Delete('recipe/:id')
   async remove(@Param('id') id: string) {
     return this.recipesService.remove(+id);
   }

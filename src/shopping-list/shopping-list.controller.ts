@@ -3,8 +3,11 @@ import { ShoppingListService } from './shopping-list.service';
 import { CreateShoppingListDto } from './dto/create-shopping-list.dto';
 import { UpdateShoppingListDto } from './dto/update-shopping-list.dto';
 import { Ingredient } from 'src/ingredients/schemas/ingredient.schema';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('shopping-list')
+@ApiTags ('SHOPPING_LIST')
+
 export class ShoppingListController {
   constructor(private readonly shoppingListService: ShoppingListService) {}
 

@@ -33,11 +33,13 @@ export class RecipesService {
     return `This action removes a #${id} recipe`;
   }
 
+
+
   async addIngredient (
     recipeId: string,
     ingredient: any,
   ): Promise<Recipe> {
-    const recipe = await this.recipeModel.findById(recipeId);
+    const recipe = await (await this.recipeModel.findById(recipeId)).populate('ingredients');
     recipe.ingredients.push(ingredient);
     return recipe.save();
 }
