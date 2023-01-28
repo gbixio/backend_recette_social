@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User, UserDocument } from './schema/user.schema';
-import { Model } from 'mongoose';
+import { Model, ObjectId } from 'mongoose';
 import { Request } from 'express';
 import { hash } from 'bcrypt';
 import { EncryptService } from 'src/tools/encrypt.service';
@@ -29,7 +29,7 @@ export class UsersService {
       .exec();
   }
 
-  async findOne(id: string) {
+  async findOne(id: string): Promise<User> {
     return this.userModel.findOne({ _id: id }).exec();
   }
 
