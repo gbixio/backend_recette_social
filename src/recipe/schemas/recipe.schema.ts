@@ -1,7 +1,9 @@
+/* eslint-disable prettier/prettier */
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { Document, ObjectId } from 'mongoose';
 import { Ingredient } from 'src/ingredients/schema/ingredient.schema';
 import { User } from 'src/users/schema/user.schema';
+import { CommentSchema } from './comment.schema';
 
 export type RecipeDocument = Recipe & Document;
 
@@ -36,6 +38,12 @@ export class Recipe {
 
   @Prop()
   views: number;
+
+  @Prop([String]) 
+  keywords: string[];
+
+  @Prop([CommentSchema]) 
+  comments: Comment[];
 }
 
 export const RecipeSchema = SchemaFactory.createForClass(Recipe);

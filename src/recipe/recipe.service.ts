@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 /* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
@@ -42,5 +43,12 @@ export class RecipeService {
 
   async remove(id: string) {
     return this.recipeModel.findByIdAndRemove({ _id: id }).exec();
+  }
+
+  async addComment(id: string, comment: any) { 
+    let commentary: RecipeDocument = await this.recipeModel.findById(id); 
+    commentary.comments.push(comment); 
+    commentary.save(); 
+    return commentary;
   }
 }
