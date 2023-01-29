@@ -18,7 +18,7 @@ export class RecipeService {
   }
 
   async findAll() {
-    return this.recipeModel.find({}, {"_id": 0, "__v": 0, "title": 1, "description": 1, "author": 1, "ingredients": 1, "time": 1})
+    return this.recipeModel.find({}, {"_id": 0, "__v": 0, "is_private": 0})
     .populate("ingredients", "name")
     .exec();
   }
