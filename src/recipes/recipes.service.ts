@@ -8,7 +8,7 @@ import { Recipe, RecipeDocument } from './schemas/recipe.schema';
 import { Model, ObjectId } from 'mongoose';
 
 @Injectable()
-export class RecipeService {
+export class RecipesService {
   constructor(
     @InjectModel(Recipe.name)
     private readonly recipeModel: Model<RecipeDocument>,
@@ -53,4 +53,15 @@ export class RecipeService {
     commentary.save(); 
     return commentary;
   }
+
+
+
+  async addIngredient (
+    recipeId: string,
+    ingredient: any,
+  ): Promise<Recipe> {
+    const recipe = await (await this.recipeModel.findById(recipeId)).populate('ingredients');
+    recipe.ingredients.push(ingredient);
+    return recipe.save();
+}
 }

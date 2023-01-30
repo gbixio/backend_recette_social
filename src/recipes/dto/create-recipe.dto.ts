@@ -1,8 +1,10 @@
 /* eslint-disable prettier/prettier */
 import { ApiProperty } from '@nestjs/swagger';
 import { ObjectId } from 'mongoose';
+import { Ingredient } from 'src/ingredients/interfaces/ingredient.interface';
 
-export class CreateRecipeDto {@ApiProperty({
+export class CreateRecipeDto {
+  @ApiProperty({
     example: 'tostada',
   })
   title: string;
@@ -25,17 +27,22 @@ export class CreateRecipeDto {@ApiProperty({
   ingredients: Array<ObjectId>;
 
   @ApiProperty({
-    example: 2
+    example: 2,
   })
   time: number;
 
   @ApiProperty({
-    example: false
+    example: ['pan', 'aceite', 'margarina', 'mermelada'],
+  })
+  ingredients: Array<Ingredient>;
+
+  @ApiProperty({
+    example: false,
   })
   is_private: boolean;
 
   @ApiProperty({
-    example: ["vegana", "fácil", "desayuno"]
+    example: ['vegana', 'fácil', 'desayuno'],
   })
-  tags: Array<string>
+  tags: Array<string>;
 }
