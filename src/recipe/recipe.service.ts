@@ -1,10 +1,11 @@
+/* eslint-disable prefer-const */
 /* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { CreateRecipeDto } from './dto/create-recipe.dto';
 import { UpdateRecipeDto } from './dto/update-recipe.dto';
 import { Recipe, RecipeDocument } from './schemas/recipe.schema';
-import { Model } from 'mongoose';
+import { Model, ObjectId } from 'mongoose';
 
 @Injectable()
 export class RecipeService {
@@ -13,23 +14,41 @@ export class RecipeService {
     private readonly recipeModel: Model<RecipeDocument>,
   ) {}
 
-  create(createRecipeDto: CreateRecipeDto) {
+  async create(createRecipeDto: CreateRecipeDto) {
     return this.recipeModel.create(createRecipeDto);
   }
 
-  findAll() {
-    return this.recipeModel.find().exec();
+  async findAll() {
+    return this.recipeModel.find({})
+    .populate("ingredients comments.user", "name")
+    .exec();
   }
 
-  findOne(id: string) {
+  async findOne(id: string) {
+    return this.recipeModel
+    .findOne({ _id: id}, {"_id": 0, "__v": 0, "is_private": 0})
+    .populate("ingredients author comments.user", "-_id -__v -shopping_list -email -password")
+    .exec()
+  }
+
+  async findOne2(id: string) {
     return this.recipeModel.findOne({ _id: id }).exec();
   }
 
-  update(id: string, updateRecipeDto: UpdateRecipeDto) {
-    return `This action updates a #${id} recipe`;
+  async update(id: string, updateRecipeDto: UpdateRecipeDto) {
+    return this.recipeModel.findOneAndUpdate({ _id: id }, updateRecipeDto, {
+      new: true,
+    });
   }
 
-  remove(id: string) {
+  async remove(id: string) {
     return this.recipeModel.findByIdAndRemove({ _id: id }).exec();
+  }
+
+  async addComment(id: string, comment: any) { 
+    let commentary: RecipeDocument = await this.recipeModel.findById(id); 
+    commentary.comments.push(comment); 
+    commentary.save(); 
+    return commentary;
   }
 }

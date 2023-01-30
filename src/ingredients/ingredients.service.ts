@@ -25,7 +25,9 @@ export class IngredientsService {
   }
 
   async update(id: string, updateIngredientDto: UpdateIngredientDto) {
-    return `This action updates a #${id} ingredient`;
+    return this.ingredientModel.findOneAndUpdate({ _id: id }, updateIngredientDto, {
+      new: true,
+    });
   }
 
   async remove(id: string) {

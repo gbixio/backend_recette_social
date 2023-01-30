@@ -11,7 +11,7 @@ import { ToolsModule } from 'src/tools/tools.module';
       name: User.name,
       schema: UserSchema
     }]),
-    ToolsModule
+    ToolsModule,
   ],
   controllers: [UsersController],
   providers: [UsersService],

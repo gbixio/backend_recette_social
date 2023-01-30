@@ -1,23 +1,31 @@
+/* eslint-disable prettier/prettier */
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import mongoose, { Document, ObjectId } from 'mongoose';
+import { Ingredient } from 'src/ingredients/schema/ingredient.schema';
+import { User } from 'src/users/schema/user.schema';
+import { CommentSchema } from './comment.schema';
 
 export type RecipeDocument = Recipe & Document;
 
 @Schema()
-export class Recipe {@Prop()
+export class Recipe {
+/*   @Prop({ type: Object, unique: true })
+  _id: ObjectId; */
+
+  @Prop()
   title: string;
 
   @Prop()
   description: string;
 
-  @Prop()
-  username: string;
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: "User" })
+  author: ObjectId;
+
+  @Prop([{ type: mongoose.Schema.Types.ObjectId, ref: "Ingredient" }])
+  ingredients: Array<ObjectId>;
 
   @Prop()
   time: number;
-
-  @Prop()
-  ingredients: Array<string>;
 
   @Prop()
   is_private: boolean;
@@ -30,6 +38,12 @@ export class Recipe {@Prop()
 
   @Prop()
   views: number;
+
+  @Prop([String]) 
+  keywords: string[];
+
+  @Prop([CommentSchema]) 
+  comments: Comment[];
 }
 
 export const RecipeSchema = SchemaFactory.createForClass(Recipe);

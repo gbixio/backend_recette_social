@@ -1,23 +1,22 @@
 /* eslint-disable prettier/prettier */
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, ObjectId } from 'mongoose';
 import { Ingredient } from 'src/ingredients/schema/ingredient.schema';
 
 export type UserDocument = User & Document;
 
 @Schema()
 export class User {
-  @Prop()
-  _id: string;
+/*   @Prop({ type: Object, unique: true })
+  _id: ObjectId; */
 
-  @Prop()
+  @Prop({ required: true })
   username: string;
 
-// crear validadores de campos: email, required etc
-  @Prop()
+  @Prop({ required: true })
   password: string;
 
-  @Prop()
+  @Prop({ required: true, match: /.+\@.+\..+/ })
   email: string;
 
   @Prop()

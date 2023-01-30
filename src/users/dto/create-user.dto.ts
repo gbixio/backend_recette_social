@@ -1,9 +1,7 @@
+/* eslint-disable prettier/prettier */
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateUserDto {
-  
-  @ApiProperty({ example: "0000"})
-  readonly _id: string;
 
   @ApiProperty({ example: 'juancoookie' })
   readonly username: string;

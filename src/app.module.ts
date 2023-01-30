@@ -12,6 +12,7 @@ import { AuthModule } from './auth/auth.module';
 import { ToolsModule } from './tools/tools.module';
 import { IngredientsModule } from './ingredients/ingredients.module';
 import { BadgesModule } from './badges/badges.module';
+import { EncryptService } from './tools/encrypt.service';
 
 @Module({
   imports: [

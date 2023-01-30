@@ -1,4 +1,6 @@
+/* eslint-disable prettier/prettier */
 import { ApiProperty } from '@nestjs/swagger';
+import { ObjectId } from 'mongoose';
 
 export class CreateRecipeDto {@ApiProperty({
     example: 'tostada',
@@ -13,19 +15,19 @@ export class CreateRecipeDto {@ApiProperty({
   @ApiProperty({
     example: 'Lola',
   })
-  username: string;
+  author: ObjectId;
+  
+  @ApiProperty({
+    example: [
+      "63d0e7a3d465ce8c3453c972",
+    ]
+  })
+  ingredients: Array<ObjectId>;
 
   @ApiProperty({
     example: 2
   })
   time: number;
-
-  @ApiProperty({
-    example: [
-      "pan", "aceite", "margarina", "mermelada"
-    ]
-  })
-  ingredients: Array<string>;
 
   @ApiProperty({
     example: false
