@@ -1,7 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { ApiProperty } from '@nestjs/swagger';
 import { ObjectId } from 'mongoose';
-import { Ingredient } from 'src/ingredients/interfaces/ingredient.interface';
 
 export class CreateRecipeDto {
   @ApiProperty({
@@ -30,11 +29,6 @@ export class CreateRecipeDto {
     example: 2,
   })
   time: number;
-
-  @ApiProperty({
-    example: ['pan', 'aceite', 'margarina', 'mermelada'],
-  })
-  ingredients: Array<Ingredient>;
 
   @ApiProperty({
     example: false,

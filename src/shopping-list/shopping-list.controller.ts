@@ -6,7 +6,7 @@ import { Ingredient } from 'src/ingredients/schemas/ingredient.schema';
 import { ApiTags } from '@nestjs/swagger';
 
 @Controller('shopping-list')
-@ApiTags ('SHOPPING_LIST')
+@ApiTags ('Shopping List')
 
 export class ShoppingListController {
   constructor(private readonly shoppingListService: ShoppingListService) {}

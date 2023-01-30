@@ -5,7 +5,7 @@ import { UpdateIngredientDto } from './dto/update-ingredient.dto';
 import { ApiTags } from '@nestjs/swagger';
 
 @Controller('ingredients')
-@ApiTags ('INGREDIENTS')
+@ApiTags ('Ingredients')
 
 export class IngredientsController {
   constructor(private readonly ingredientsService: IngredientsService) {}

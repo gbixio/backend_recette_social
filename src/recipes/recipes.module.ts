@@ -12,6 +12,7 @@ import { MongooseModule } from '@nestjs/mongoose';
     }])
   ],
   controllers: [RecipesController],
-  providers: [RecipesService]
+  providers: [RecipesService],
+  exports: [RecipesService],
 })
 export class RecipesModule {}

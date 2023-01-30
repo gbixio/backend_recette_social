@@ -5,7 +5,7 @@ import { UpdateBadgeDto } from './dto/update-badge.dto';
 import { ApiTags } from '@nestjs/swagger';
 
 @Controller('badges')
-@ApiTags('badges')
+@ApiTags('Badges')
 export class BadgesController {
   constructor(private readonly badgesService: BadgesService) {}
 

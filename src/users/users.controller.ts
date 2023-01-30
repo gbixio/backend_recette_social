@@ -8,7 +8,7 @@ import { ObjectId } from 'mongoose';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 
 @Controller('users')
-@ApiTags('users')
+@ApiTags('Users')
 
 @Controller('users')
 @ApiTags ('USERS')

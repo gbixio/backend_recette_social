@@ -8,7 +8,7 @@ import { Menu, MenuDocument } from './schemas/menu.schema';
 @Injectable()
 export class MenusService {
   constructor(
-    @InjectModel(Menu.title) private readonly menuModel: Model<MenuDocument>,
+    @InjectModel(Menu.name) private readonly menuModel: Model<MenuDocument>,
   ) {}
   async create(createMenuDto: CreateMenuDto) {
     return this.menuModel.create(createMenuDto);
