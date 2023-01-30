@@ -14,8 +14,8 @@ export class MenusController {
 
   @UseGuards(JwtAuthGuard)
   @Post()
-  async create(@Body() createRecipeDto: CreateMenuDto) {
-    return this.menusService.create(CreateMenuDto);
+  async create(@Body() createMenuDto: CreateMenuDto) {
+    return this.menusService.create(createMenuDto);
   }
 
   @Get()
@@ -42,7 +42,7 @@ export class MenusController {
 
   @UseGuards(JwtAuthGuard)
   @Delete(':id')
-  async removeRecipeFromMenu(@Param('id') id: ObjectId) {
-    return this.menusService.removeRecipeFromMenu(id);
+  async removeRecipeFromMenu(@Param('id') menuId:ObjectId, recipeId: ObjectId) {
+    return this.menusService.removeRecipeFromMenu(menuId, recipeId);
   }
 }

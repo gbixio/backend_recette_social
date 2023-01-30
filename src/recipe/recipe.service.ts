@@ -18,14 +18,14 @@ export class RecipeService {
   }
 
   async findAll() {
-    return this.recipeModel.find({}, {"_id": 0, "__v": 0, "is_private": 0})
+    return this.recipeModel.find({}, {"__v": 0, "is_private": 0})
     .populate("ingredients", "name")
     .exec();
   }
 
   async findOne(id: string) {
     return this.recipeModel
-    .findOne({ _id: id}, {"_id": 0, "__v": 0, "is_private": 0})
+    .findOne({ _id: id}, { "__v": 0, "is_private": 0})
     .populate("ingredients author", "-_id -__v -shopping_list -email -password")
     .exec()
   }

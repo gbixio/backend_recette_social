@@ -8,7 +8,7 @@ import { Menu, MenuDocument } from './schemas/menu.schema';
 @Injectable()
 export class MenusService {
   constructor(
-    @InjectModel(Menu.title) private readonly menuModel: Model<MenuDocument>,
+    @InjectModel(Menu.name) private readonly menuModel: Model<MenuDocument>,
   ) {}
   async create(createMenuDto: CreateMenuDto) {
     return this.menuModel.create(createMenuDto);
@@ -24,7 +24,7 @@ export class MenusService {
   async findOne(id: ObjectId) {
     return this.menuModel
       .findOne({ _id: id }, { _id: 0, __v: 0, is_private: 0 })
-      .populate('recipe', '-_id -__v -ingredients -author -description')
+      .populate('recipe', '-_id -__v  -author -description')
       .exec();
   }
 

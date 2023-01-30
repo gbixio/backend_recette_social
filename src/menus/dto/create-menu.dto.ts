@@ -16,12 +16,12 @@ export class CreateMenuDto {
       @ApiProperty({
         example: 'vegana',
       })
-      type: Array <string>;
+      category: Array <string>;
 
     //   COPIAR ID DE USUARIO CUANDO PONGAMOS NPM START
       @ApiProperty({
         example: [
-          "63d0e7a3d465ce8c3453c972",
+          "",
         ]
       })
       user: ObjectId;

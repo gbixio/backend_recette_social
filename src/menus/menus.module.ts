@@ -12,6 +12,6 @@ import { MongooseModule } from '@nestjs/mongoose';
     }])
   ],
   controllers: [MenusController],
-  providers: [MenusService]
+  providers: [MenusService],
 })
 export class MenusModule {}
