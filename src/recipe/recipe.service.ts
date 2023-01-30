@@ -26,7 +26,7 @@ export class RecipeService {
 
   async findOne(id: string) {
     return this.recipeModel
-    .findOne({ _id: id}, {"_id": 0, "__v": 0, "is_private": 0})
+    .findOne({ _id: id}, { "__v": 0, "is_private": 0})
     .populate("ingredients author comments.user", "-_id -__v -shopping_list -email -password")
     .exec()
   }
