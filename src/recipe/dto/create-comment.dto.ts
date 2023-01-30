@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { ApiProperty } from '@nestjs/swagger';
+import { ObjectId } from 'mongoose';
 import { User } from '../../users/schema/user.schema';
 
 export class CreateCommentDto {
@@ -17,6 +18,6 @@ export class CreateCommentDto {
   })
   readonly comment: string;
 
-  @ApiProperty({ example: 'SatyaBlue' })
-  readonly username: User;
+  @ApiProperty({ example: '63d7873a3eb90db3ba4b52e1' })
+  readonly user: ObjectId;
 }

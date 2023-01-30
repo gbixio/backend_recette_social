@@ -19,15 +19,15 @@ export class RecipeService {
   }
 
   async findAll() {
-    return this.recipeModel.find({}, {"_id": 0, "__v": 0, "title": 1, "description": 1, "author": 1, "ingredients": 1, "time": 1})
-    .populate("ingredients", "name")
+    return this.recipeModel.find({})
+    .populate("ingredients comments.user", "name")
     .exec();
   }
 
   async findOne(id: string) {
     return this.recipeModel
     .findOne({ _id: id}, {"_id": 0, "__v": 0, "is_private": 0})
-    .populate("ingredients author", "-_id -__v -shopping_list -email -password")
+    .populate("ingredients author comments.user", "-_id -__v -shopping_list -email -password")
     .exec()
   }
 
