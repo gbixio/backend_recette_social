@@ -29,11 +29,13 @@ export class RecipeController {
     return this.recipeService.findOne(id);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Patch(':id')
   async update(@Param('id') id: string, @Body() updateRecipeDto: UpdateRecipeDto) {
     return this.recipeService.update(id, updateRecipeDto);
   }
-
+  
+  @UseGuards(JwtAuthGuard)
   @Delete(':id')
   async remove(@Param('id') id: string) {
     return this.recipeService.remove(id);

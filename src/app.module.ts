@@ -13,6 +13,7 @@ import { ToolsModule } from './tools/tools.module';
 import { IngredientsModule } from './ingredients/ingredients.module';
 import { BadgesModule } from './badges/badges.module';
 import { EncryptService } from './tools/encrypt.service';
+import { MenusModule } from './menus/menus.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { EncryptService } from './tools/encrypt.service';
     ToolsModule,
     IngredientsModule,
     BadgesModule,
+    MenusModule,
   ],
   controllers: [AppController ],
   providers: [AppService],
