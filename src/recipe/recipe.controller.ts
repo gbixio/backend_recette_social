@@ -1,9 +1,12 @@
+/* eslint-disable prettier/prettier */
 import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
 import { RecipeService } from './recipe.service';
 import { CreateRecipeDto } from './dto/create-recipe.dto';
 import { UpdateRecipeDto } from './dto/update-recipe.dto';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { ApiTags } from '@nestjs/swagger';
+import { ParseObjectIdPipe } from '../utilities/parse-object-id-pipe.pipe';
+import { CreateCommentDto } from './dto/create-comment.dto';
 
 @Controller('recipe')
 @ApiTags('recipes')
@@ -36,5 +39,13 @@ export class RecipeController {
   @Delete(':id')
   async remove(@Param('id') id: string) {
     return this.recipeService.remove(id);
+  }
+
+  @Post(':id/comment') 
+  async addComment(
+    @Param('id', ParseObjectIdPipe) id: string, 
+    @Body() comment: CreateCommentDto, 
+  ) {
+    return this.recipeService.addComment(id, comment); 
   }
 }

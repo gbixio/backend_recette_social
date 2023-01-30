@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 /* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
@@ -19,14 +20,14 @@ export class RecipeService {
 
   async findAll() {
     return this.recipeModel.find({}, {"__v": 0, "is_private": 0})
-    .populate("ingredients author", "-_id -__v -shopping_list -email -password")
+    .populate("ingredients author comments.user", "-_id -__v -shopping_list -email -password")
     .exec();
   }
 
   async findOne(id: string) {
     return this.recipeModel
     .findOne({ _id: id}, {"_id": 0, "__v": 0, "is_private": 0})
-    .populate("ingredients author", "-_id -__v -shopping_list -email -password")
+    .populate("ingredients author comments.user", "-_id -__v -shopping_list -email -password")
     .exec()
   }
 
@@ -42,5 +43,12 @@ export class RecipeService {
 
   async remove(id: string) {
     return this.recipeModel.findByIdAndRemove({ _id: id }).exec();
+  }
+
+  async addComment(id: string, comment: any) { 
+    let commentary: RecipeDocument = await this.recipeModel.findById(id); 
+    commentary.comments.push(comment); 
+    commentary.save(); 
+    return commentary;
   }
 }
