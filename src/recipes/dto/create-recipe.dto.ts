@@ -14,7 +14,7 @@ export class CreateRecipeDto {
   description: string;
 
   @ApiProperty({
-    example: 'Lola',
+    example: '63d9049bee15be130124a938',
   })
   author: ObjectId;
   
