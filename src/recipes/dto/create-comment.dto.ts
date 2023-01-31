@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { ApiProperty } from '@nestjs/swagger';
 import { ObjectId } from 'mongoose';
-import { User } from '../../users/schema/user.schema';
+import { User } from '../../users/schemas/user.schema';
 
 export class CreateCommentDto {
   @ApiProperty({ example: 'Me encantó' })

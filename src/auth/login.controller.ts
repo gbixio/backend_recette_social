@@ -5,7 +5,7 @@ import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './guards/local.guard';
 
 @Controller()
-@ApiTags('login')
+@ApiTags('Login')
 export class LoginController {
     constructor(private authService: AuthService){}
     @UseGuards(LocalAuthGuard)

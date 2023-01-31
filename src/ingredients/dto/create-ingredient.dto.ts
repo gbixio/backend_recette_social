@@ -2,7 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateIngredientDto {
 
-    @ApiProperty({ example: "farina" })
+    @ApiProperty({ example: "harina" })
     readonly name: string;
 
     @ApiProperty({ example: "grams" })

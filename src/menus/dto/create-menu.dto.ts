@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { ObjectId } from 'mongoose';
-import { Recipe } from 'src/recipe/interfaces/recipe.interface';
+import { Recipe } from 'src/recipes/interfaces/recipe.interface';
 
 export class CreateMenuDto {
     @ApiProperty({

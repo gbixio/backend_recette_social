@@ -1,9 +1,11 @@
 /* eslint-disable prettier/prettier */
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { Document, ObjectId } from 'mongoose';
-import { Ingredient } from 'src/ingredients/schema/ingredient.schema';
-import { User } from 'src/users/schema/user.schema';
+import { User } from 'src/users/schemas/user.schema';
 import { CommentSchema } from './comment.schema';
+import { Ingredient } from 'src/ingredients/interfaces/ingredient.interface';
+
+
 
 export type RecipeDocument = Recipe & Document;
 
@@ -44,6 +46,8 @@ export class Recipe {
 
   @Prop([CommentSchema]) 
   comments: Comment[];
+  @Prop()
+  photo: string;
 }
 
 export const RecipeSchema = SchemaFactory.createForClass(Recipe);

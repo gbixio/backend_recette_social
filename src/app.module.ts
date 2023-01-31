@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { RecipeModule } from './recipe/recipe.module';
+import { RecipesModule } from './recipes/recipes.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from './users/users.module';
 import { AuthService } from './auth/auth.service';
@@ -11,19 +11,23 @@ import { UsersController } from './users/users.controller';
 import { AuthModule } from './auth/auth.module';
 import { ToolsModule } from './tools/tools.module';
 import { IngredientsModule } from './ingredients/ingredients.module';
+import { BadgesModule } from './badges/badges.module';
 import { EncryptService } from './tools/encrypt.service';
 import { MenusModule } from './menus/menus.module';
+import { ShoppingListModule } from './shopping-list/shopping-list.module';
 
 @Module({
   imports: [
     MongooseModule.forRoot("mongodb://127.0.0.1:27017/LaRecetteSocial"),
-    RecipeModule,
+    RecipesModule,
     UsersModule,
     AuthModule,
     ToolsModule,
     IngredientsModule,
+    ShoppingListModule,
+    BadgesModule,
     MenusModule,
-  ],
+ ],
   controllers: [AppController ],
   providers: [AppService],
 })

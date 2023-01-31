@@ -7,7 +7,7 @@ import { ApiTags } from '@nestjs/swagger';
 import { ObjectId } from 'mongoose';
 
 @Controller('menus')
-@ApiTags('menus')
+@ApiTags('Menus')
 
 export class MenusController {
   constructor(private readonly menusService: MenusService) {}
@@ -42,7 +42,7 @@ export class MenusController {
 
   @UseGuards(JwtAuthGuard)
   @Delete(':id')
-  async removeRecipeFromMenu(@Param('id') menuId:ObjectId, recipeId: ObjectId) {
+  async removeRecipeFromMenu(@Param('id') menuId: ObjectId, recipeId: ObjectId) {
     return this.menusService.removeRecipeFromMenu(menuId, recipeId);
   }
 }

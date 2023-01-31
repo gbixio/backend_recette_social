@@ -1,6 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { Document, ObjectId } from 'mongoose';
-import { Recipe } from 'src/recipe/interfaces/recipe.interface';
 
 
 export type MenuDocument = Menu & Document;
@@ -20,7 +19,7 @@ export class Menu {
   user: ObjectId;
 
   @Prop([{ type: mongoose.Schema.Types.ObjectId, ref: "Recipe" }])
-  recipes: Array<Recipe>;
+  recipes: Array<ObjectId>;
   static title: string;
 
 
